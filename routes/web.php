@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAgentList;
+use App\Http\Controllers\AdminEnquiry;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AgentPropertyController;
 use App\Http\Controllers\HomeController;
@@ -33,6 +34,7 @@ Route::resource('properties', PropertyController::class);
 
 // Agent Properties Routes
 Route::resource('agentproperties', AgentPropertyController::class);
+Route::resource('adminenquiry', AdminEnquiry::class);
 
 // Custom Routes for Agent Properties
 Route::get('/viewpropertylist', [PropertyController::class, 'viewPropertyList'])->name('viewpropertylist');
