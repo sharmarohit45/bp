@@ -1,0 +1,52 @@
+<?php
+
+use App\Http\Controllers\AdminAgentList;
+use App\Http\Controllers\AgentController;
+use App\Http\Controllers\AgentPropertyController;
+use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PropertyController;
+use App\Http\Controllers\PropertyDetailsController;
+
+// Home Route
+Route::get('/', [PropertyDetailsController::class, 'get_property'])->name('welcome');
+
+// Package Routes
+Route::get('/package', function () {
+    return view('agent.agentpackages');
+});
+Route::get('/admin/enquiries', function () {
+    return view('admin.adminenquiry');
+});
+Route::get('/admin/package', function () {
+    return view('admin.adminpackage');
+});
+Route::get('/agent-package', function () {
+    return view('agent.agentpackagelist');
+});
+Route::get('/our-packages', function () {
+    return view('our-packages');
+});
+
+Route::get('/all-properties', [PropertyDetailsController::class, 'index'])->name('allproperties');
+Route::resource('properties', PropertyController::class);
+
+// Agent Properties Routes
+Route::resource('agentproperties', AgentPropertyController::class);
+
+// Custom Routes for Agent Properties
+Route::get('/viewpropertylist', [PropertyController::class, 'viewPropertyList'])->name('viewpropertylist');
+Route::get('/agentPropertyList', [AgentPropertyController::class, 'agentPropertyList'])->name('agentPropertyList');
+Route::get('/redirect', [HomeController::class, 'redirect'])->middleware('auth', 'verified');
+Route::get('/view_property', [AgentController::class, 'view_property']);
+
+// Additional routes for editing and updating
+Route::get('agentproperties/{agentproperty}/edit', [AgentPropertyController::class, 'edit'])->name('agentproperties.edit');
+Route::put('agentproperties/{agentproperty}', [AgentPropertyController::class, 'update'])->name('agentproperties.update');
+Route::delete('/agentproperties/{property}', [AgentPropertyController::class, 'destroy'])->name('agentproperties.destroy');
+
+Route::get('/admin-agents', [AdminAgentList::class, 'index']);
+Route::get('/agent/property/{id}', [AgentPropertyController::class, 'showFullDetail'])->name('agent.property.show');
+Route::get('/admin/property/{id}', [PropertyController::class, 'showFullDetail'])->name('admin.property.show');
+
+
