@@ -16,11 +16,12 @@ class AdminAgentList extends Controller
         return view('admin.adminAgentList', compact('userData'));
     }
     
-    public function show_agent_details()
+    public function showagentdetails($id)
     {
-        $userData = User::all();
-        return view('admin.adminpropertydetails', compact('userData'));
+        $agent = User::findOrFail($id);
+        return view('admin.adminagentdetails', compact('agent'));
     }
+    
     public function create()
     {
         return view('properties.create');
@@ -29,10 +30,8 @@ class AdminAgentList extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-
             'propertyType' => 'required|string|max:255',
             'propertyPrice' => 'required|numeric',
-            
             'propertyName' => 'required|string|max:255',
             'location' => 'required|string|max:255',
             'squareFit' => 'required|integer',

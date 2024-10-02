@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminAgentList;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminEnquiry;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AgentPropertyController;
@@ -11,7 +12,7 @@ use App\Http\Controllers\PropertyDetailsController;
 
 // Home Route
 Route::get('/', [PropertyDetailsController::class, 'get_property'])->name('welcome');
-
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
 // Package Routes
 Route::get('/package', function () {
     return view('agent.agentpackages');
@@ -50,5 +51,6 @@ Route::delete('/agentproperties/{property}', [AgentPropertyController::class, 'd
 Route::get('/admin-agents', [AdminAgentList::class, 'index']);
 Route::get('/agent/property/{id}', [AgentPropertyController::class, 'showFullDetail'])->name('agent.property.show');
 Route::get('/admin/property/{id}', [PropertyController::class, 'showFullDetail'])->name('admin.property.show');
+Route::get('/admin/agent/{id}', [AdminAgentList::class, 'showagentdetails'])->name('admin.agent.show');
 
-
+Route::get('/admin/enquiries', [AdminEnquiry::class, 'index'])->name('adminenquiry.index');

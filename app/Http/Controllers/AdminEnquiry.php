@@ -42,14 +42,14 @@ class AdminEnquiry extends Controller
     // Display an individual inquiry
     public function show(Enquiry $property)
     {
-        return view('adminenquiry.show', compact('property'));
+        return view('admin.enquiry.show', compact('property'));
     }
 
     // Edit a specific inquiry
     public function edit($id)
     {
         $property = Enquiry::findOrFail($id);
-        return response()->json($property);
+        return view('enquiry.edit', compact('property'));
     }
 
     // Update an existing inquiry
@@ -73,7 +73,6 @@ class AdminEnquiry extends Controller
     public function destroy(Enquiry $property)
     {
         $property->delete();
-
         return redirect()->route('adminenquiry.index')->with('success', 'Enquiry deleted successfully.');
     }
 }
