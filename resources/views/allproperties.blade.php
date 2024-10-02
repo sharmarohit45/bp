@@ -74,7 +74,6 @@
                     </button>
                 </div>
 
-
                 <div class="card-body">
                     <span class="category badge bg-dark text-white">{{ $property->propertyType }}</span>
                     <h6 class="card-title text-dark">${{ number_format($property->propertyPrice, 2) }}</h6>
@@ -114,8 +113,7 @@
         @endforelse
     </div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content p-2">
                 <div class="row pt-2">
@@ -124,8 +122,7 @@
                         <hr class="text-dark">
                     </div>
                 </div>
-                <form action="{{ route('adminenquiry.store') }}" method="POST" 
-                    class="container">
+                <form action="{{ route('adminenquiry.store') }}" method="POST" class="container">
                     @csrf
                     <div class="row mb-3">
                         <div class="col">
@@ -145,14 +142,13 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="name"><b class="text-dark">Name</b></label>
-                                <input type="text" name="posted_from" id="name" class="form-control" >
+                                <input type="text" name="name" id="name" class="form-control" required>
                             </div>
                         </div>
                         <div class="col">
                             <div class="form-group">
                                 <label for="email"><b class="text-dark">Email</b></label>
-                                <input type="text" name="email" id="email"
-                                    class="form-control" required >
+                                <input type="email" name="email" id="email" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -160,7 +156,7 @@
                         <div class="col">
                             <div class="form-group">
                                 <label for="phone"><b class="text-dark">Phone</b></label>
-                                <input type="number" name="phone" id="name" class="form-control">
+                                <input type="text" name="phone" id="phone" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -175,7 +171,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 

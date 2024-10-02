@@ -11,7 +11,8 @@
             <title>Admin Dashboard</title>
 
             <style>
-                body, html {
+                body,
+                html {
                     height: 100%;
                     margin: 0;
                     overflow-x: hidden;
@@ -97,7 +98,7 @@
                 <div id="sidebar-wrapper">
                     <div class="sidebar-heading">Admin Panel</div>
                     <div class="list-group list-group-flush">
-                        <a href="/redirect" class="list-group-item list-group-item-action">
+                        <a href="/admin/dashboard" class="list-group-item list-group-item-action">
                             <i class="bi bi-house-door-fill"></i> Dashboard
                         </a>
                         <a href="/admin-agents" class="list-group-item list-group-item-action">
@@ -120,20 +121,20 @@
                         </a>
                     </div>
                 </div>
-@yield('admin-main')
-</div>
+                @yield('admin-main')
+            </div>
 
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-<script>
-    // Toggle the sidebar
-    document.getElementById('menu-toggle').onclick = function () {
-        var wrapper = document.getElementById('wrapper');
-        wrapper.classList.toggle('toggled');
-    };
-</script>
-</body>
+            <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+            <script>
+                // Toggle the sidebar
+                document.getElementById('menu-toggle').onclick = function() {
+                    var wrapper = document.getElementById('wrapper');
+                    wrapper.classList.toggle('toggled');
+                };
+            </script>
+        </body>
 
-</html>
-</div>
+        </html>
+    </div>
 </x-app-layout>

@@ -55,7 +55,9 @@
                                 @if ($property->usertype === 'user')
                                 <tr>
                                     <td class="text-white">{{ $property->id }}</td>
-                                    <td class="text-white">{{ $property->name }}</td>
+                                    <td>
+                                        <a href="{{ route('admin.agent.show',  $property->id) }}" style="text-decoration: none;color:white">{{  $property->name }}</a> <!-- Use the route to show agent details -->
+                                    </td>
                                     <td class="text-white">{{ $property->email }}</td>
                                     <td class="text-white">{{ $property->agent_for }}</td>
                                     <td class="text-end">
