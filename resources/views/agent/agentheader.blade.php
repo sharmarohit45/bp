@@ -76,6 +76,47 @@
                 #wrapper.toggled #sidebar-wrapper {
                     margin-left: -250px;
                 }
+                .card-img-container {
+            position: relative;
+        }
+
+        .card-img-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            /* Black transparent overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+
+        .card-img-top {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .card-title {
+            color: white;
+            /* Gold color for package name */
+            font-weight: bold;
+            z-index: 2;
+            /* Ensures the text is above the overlay */
+        }
+
+        .package-heading {
+            text-align: center;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #343a40;
+            /* Adjust color as needed */
+        }
             </style>
         </head>
 
@@ -91,16 +132,13 @@
                         <a href="/agentPropertyList" class="list-group-item list-group-item-action">
                             <i class="bi bi-building"></i> Properties
                         </a>
-                        <a href="/admin/users" class="list-group-item list-group-item-action">
-                            <i class="bi bi-person-fill"></i> Users
-                        </a>
-                        <a href="/admin/enquiries" class="list-group-item list-group-item-action">
+                        <a href="/admin/enquiry" class="list-group-item list-group-item-action">
                             <i class="bi bi-envelope-fill"></i> Enquiries
                         </a>
                         <a href="/agent-package" class="list-group-item list-group-item-action">
                             <i class="bi bi-file-earmark-text"></i> Packages
                         </a>
-                        <a href="/admin/settings" class="list-group-item list-group-item-action">
+                        <a href="/user/profile" class="list-group-item list-group-item-action">
                             <i class="bi bi-gear-fill"></i> Settings
                         </a>
                     </div>

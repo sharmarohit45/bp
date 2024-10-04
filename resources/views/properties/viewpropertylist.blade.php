@@ -57,7 +57,9 @@
                                                 <tr>
                                                     <th>Id</th>
                                                     <th>Property Name</th>
-                                                    <th>Property Location</th>
+                                                    <th>State</th>
+                                                    <th>Address</th>
+                                                    <th>City</th>
                                                     <th>Area (sq ft)</th>
                                                     <th>Bath</th>
                                                     <th>Bed</th>
@@ -74,7 +76,9 @@
                                                    <td> <a href="{{ route('admin.property.show', $property->id) }}"class="text-white" style="text-decoration: none">
                                                         {{ $property->propertyName }}
                                                     </a></td>
-                                                    <td class="text-white">{{ $property->location }}</td>
+                                                    <td class="text-white">{{ $property->state }}</td>
+                                                    <td class="text-white">{{ $property->address }}</td>
+                                                    <td class="text-white">{{ $property->city }}</td>
                                                     <td class="text-white">{{ $property->squareFit }}</td>
                                                     <td class="text-white">{{ $property->bathNumber }}</td>
                                                     <td class="text-white">{{ $property->bedNumber }}</td>
@@ -99,7 +103,9 @@
                                                             data-id="{{ $property->id }}"
                                                             data-name="{{ $property->propertyName }}"
                                                             data-type="{{ $property->propertyType }}"
-                                                            data-location="{{ $property->location }}"
+                                                            data-state="{{ $property->state }}"
+                                                             data-address="{{ $property->address }}"
+                                                              data-city="{{ $property->city }}"
                                                             data-price="{{ $property->propertyPrice }}"
                                                             data-square="{{ $property->squareFit }}"
                                                             data-bed="{{ $property->bedNumber }}"
@@ -187,8 +193,22 @@
                                     </div>
                                     <div class="col">
                                         <div class="form-group">
-                                            <label for="location"><b class="text-dark">Location</b></label>
-                                            <input type="text" name="location" id="location" class="form-control"
+                                            <label for="location"><b class="text-dark">State</b></label>
+                                            <input type="text" name="state" id="state" class="form-control"
+                                                required placeholder="e.g., New York, NY">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="address"><b class="text-dark">Address</b></label>
+                                            <input type="text" name="address" id="address" class="form-control"
+                                                required placeholder="e.g., New York, NY">
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="city"><b class="text-dark">City</b></label>
+                                            <input type="text" name="city" id="city" class="form-control"
                                                 required placeholder="e.g., New York, NY">
                                         </div>
                                     </div>
@@ -258,8 +278,16 @@
                                         <input type="text" class="form-control" id="editPropertyType" name="propertyType" required>
                                     </div>
                                     <div class="mb-3">
-                                        <label for="editLocation" class="form-label text-dark">Location</label>
-                                        <input type="text" class="form-control" id="editLocation" name="location" required>
+                                        <label for="editState" class="form-label text-dark">State</label>
+                                        <input type="text" class="form-control" id="editState" name="state" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editAddress" class="form-label text-dark">Address</label>
+                                        <input type="text" class="form-control" id="editAddress" name="address" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="editCity" class="form-label text-dark">City</label>
+                                        <input type="text" class="form-control" id="editCity" name="city" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="editPropertyPrice" class="form-label text-dark">Property Price</label>
@@ -300,7 +328,9 @@
                             id: button.getAttribute('data-id'),
                             propertyName: button.getAttribute('data-name'),
                             propertyType: button.getAttribute('data-type'),
-                            location: button.getAttribute('data-location'),
+                            state: button.getAttribute('data-state'),
+                            address: button.getAttribute('data-address'),
+                            city: button.getAttribute('data-city'),
                             propertyPrice: button.getAttribute('data-price'),
                             squareFit: button.getAttribute('data-square'),
                             bedNumber: button.getAttribute('data-bed'),
@@ -311,7 +341,9 @@
                         document.getElementById('editPropertyId').value = property.id;
                         document.getElementById('editPropertyName').value = property.propertyName;
                         document.getElementById('editPropertyType').value = property.propertyType;
-                        document.getElementById('editLocation').value = property.location;
+                        document.getElementById('editState').value = property.state;
+                        document.getElementById('editAddress').value = property.address;
+                        document.getElementById('editCity').value = property.city;
                         document.getElementById('editPropertyPrice').value = property.propertyPrice;
                         document.getElementById('editSquareFit').value = property.squareFit;
                         document.getElementById('editBedNumber').value = property.bedNumber;

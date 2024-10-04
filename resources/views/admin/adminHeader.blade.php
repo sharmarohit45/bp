@@ -107,6 +107,9 @@
                         <a href="/viewpropertylist" class="list-group-item list-group-item-action">
                             <i class="bi bi-building"></i> Properties
                         </a>
+                        {{-- <a href="/viewpropertylist" class="list-group-item list-group-item-action">
+                            <i class="bi bi-building"></i> Type
+                        </a> --}}
                         <a href="/admin/enquiries" class="list-group-item list-group-item-action">
                             <i class="bi bi-envelope-fill"></i> Enquiries
                         </a>

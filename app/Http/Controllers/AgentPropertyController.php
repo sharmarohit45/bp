@@ -38,10 +38,13 @@ class AgentPropertyController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
+
             'propertyType' => 'required|string|max:255',
             'propertyPrice' => 'required|numeric',
             'propertyName' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'squareFit' => 'required|integer',
             'bedNumber' => 'required|integer',
             'bathNumber' => 'required|integer',
@@ -54,7 +57,9 @@ class AgentPropertyController extends Controller
             $propertyFolderName = preg_replace('/[^A-Za-z0-9_\-]/', '_', $validated['propertyName']);
             $directoryPath = public_path("propertyimages/{$propertyFolderName}");
 
+
             if (!File::exists($directoryPath)) {
+
                 File::makeDirectory($directoryPath, 0755, true);
             }
 
@@ -63,13 +68,16 @@ class AgentPropertyController extends Controller
                     $imageName = time() . '_' . $image->getClientOriginalName();
                     $image->move($directoryPath, $imageName);
                     $imagePaths[] = "propertyimages/{$propertyFolderName}/{$imageName}";
+                } else {
+
+                    // \Log::error('Invalid image upload: ' . $image->getError());
                 }
             }
         }
 
         Property::create(array_merge($validated, [
             'image_paths' => json_encode($imagePaths),
-            'posted_from' => Auth::id(),
+            'posted_from' => Auth::id(), // Ensure this line is included
         ]));
         return redirect()->route('agentPropertyList')->with('success', 'Property created successfully.');
     }

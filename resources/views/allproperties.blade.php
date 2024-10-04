@@ -35,6 +35,20 @@
     }
 </style>
 
+<div class="container mt-3 mb-3 bg-primary">
+    <form action="{{ route('properties.search') }}" method="GET" class="mt-5">
+        <div>
+            <label for="state">State:</label>
+            <input type="text" name="state" id="state" value="{{ request('state') }}" required>
+        </div>
+        <div>
+            <label for="city">City:</label>
+            <input type="text" name="city" id="city" value="{{ request('city') }}" required>
+        </div>
+        <button type="submit">Search</button>
+    </form>
+</div>
+
 <div class="container" style="margin-top: 100px">
     <div class="row g-0 gx-5 align-items-end">
         <div class="col-12">
@@ -47,69 +61,71 @@
 
     <div class="row properties-box mt-5">
         @forelse ($properties as $property)
-        <div class="col-lg-4 col-md-6 mb-4 properties-items adv">
-            <div class="card">
-                <div id="carouselExample{{ $property->id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
-                    <div class="carousel-inner">
-                        @php
-                        $images = json_decode($property->image_paths, true) ?: [];
-                        @endphp
-                        @if (!empty($images))
-                        @foreach ($images as $index => $imagePath)
-                        <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
-                            <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="Image of {{ $property->propertyName }} - Slide {{ $index + 1 }}" />
+            <div class="col-lg-4 col-md-6 mb-4 properties-items adv">
+                <div class="card">
+                    <div id="carouselExample{{ $property->id }}" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" aria-label="Property images for {{ $property->propertyName }}">
+                        <div class="carousel-inner">
+                            @php
+                                $images = json_decode($property->image_paths, true) ?: [];
+                            @endphp
+                            @if (!empty($images))
+                                @foreach ($images as $index => $imagePath)
+                                    <div class="carousel-item {{ $index === 0 ? 'active' : '' }}">
+                                        <img src="{{ asset($imagePath) }}" class="d-block w-100" alt="Image of {{ $property->propertyName }} - Slide {{ $index + 1 }}" />
+                                    </div>
+                                @endforeach
+                            @else
+                                <div class="carousel-item active">
+                                    <img src="{{ asset('Images/Property/default-image.jpg') }}" class="d-block w-100" alt="Default Image" />
+                                </div>
+                            @endif
                         </div>
-                        @endforeach
-                        @else
-                        <div class="carousel-item active">
-                            <img src="{{ asset('Images/Property/default-image.jpg') }}" class="d-block w-100" alt="Default Image" />
-                        </div>
-                        @endif
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ $property->id }}" data-bs-slide="prev" aria-label="Previous image">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ $property->id }}" data-bs-slide="next" aria-label="Next image">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample{{ $property->id }}" data-bs-slide="prev" aria-label="Previous">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample{{ $property->id }}" data-bs-slide="next" aria-label="Next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    </button>
-                </div>
 
-                <div class="card-body">
-                    <span class="category badge bg-dark text-white">{{ $property->propertyType }}</span>
-                    <h6 class="card-title text-dark">${{ number_format($property->propertyPrice, 2) }}</h6>
-                    <h4 class="card-text">
-                        <a href="{{ route('properties.show', $property->id) }}" class="text-decoration-none">{{ $property->propertyName }}</a><br>
-                        <small class="text-muted">{{ $property->location }}</small>
-                    </h4>
-                    <table class="table table-responsive table-bordered mt-3">
-                        <tbody>
-                            <tr>
-                                <th>Bedrooms</th>
-                                <td>{{ $property->bedNumber }}</td>
-                            </tr>
-                            <tr>
-                                <th>Bathrooms</th>
-                                <td>{{ $property->bathNumber }}</td>
-                            </tr>
-                            <tr>
-                                <th>Area</th>
-                                <td>{{ $property->squareFit }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="main-button">
-                        <a class="btn btn-dark" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal"
-                            data-property-name="{{ $property->propertyName }}"
-                            data-property-location="{{ $property->location }}">Schedule a Visit</a>
+                    <div class="card-body">
+                        <span class="category badge bg-dark text-white">{{ $property->propertyType }}</span>
+                        <h6 class="card-title text-dark">${{ number_format($property->propertyPrice, 2) }}</h6>
+                        <h4 class="card-text">
+                            <a href="{{ route('properties.show', $property->id) }}" class="text-decoration-none">{{ $property->propertyName }}</a><br>
+                            <small class="text-muted">{{ $property->address }}, {{ $property->city }}, {{ $property->state }}</small>
+                        </h4>
+                        <table class="table table-responsive table-bordered mt-3">
+                            <tbody>
+                                <tr>
+                                    <th>Bedrooms</th>
+                                    <td>{{ $property->bedNumber }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Bathrooms</th>
+                                    <td>{{ $property->bathNumber }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Area</th>
+                                    <td>{{ $property->squareFit }} sq ft</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="main-button">
+                            <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                data-property-name="{{ $property->propertyName }}"
+                                data-property-location="{{ $property->location }}"
+                                data-address="{{ $property->address }}"
+                                data-city="{{ $property->city }}"
+                                data-state="{{ $property->state }}">Schedule a Visit</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @empty
-        <div class="col-12">
-            <p class="text-center">No properties available at the moment.</p>
-        </div>
+            <div class="col-12">
+                <p class="text-center">No properties available at the moment.</p>
+            </div>
         @endforelse
     </div>
 
@@ -133,8 +149,22 @@
                         </div>
                         <div class="col">
                             <div class="form-group">
-                                <label for="property_location"><b class="text-dark">Property Location</b></label>
-                                <input type="text" name="property_location" id="property_location" class="form-control" readonly>
+                                <label for="address"><b class="text-dark">Address</b></label>
+                                <input type="text" name="address" id="address" class="form-control" readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="city"><b class="text-dark">City</b></label>
+                                <input type="text" name="city" id="city" class="form-control" readonly>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="form-group">
+                                <label for="state"><b class="text-dark">State</b></label>
+                                <input type="text" name="state" id="state" class="form-control" readonly>
                             </div>
                         </div>
                     </div>
@@ -167,29 +197,25 @@
                         </div>
                     </div>
                 </form>
-
             </div>
         </div>
     </div>
-
 </div>
 
 <script>
     var exampleModal = document.getElementById('exampleModal');
     exampleModal.addEventListener('show.bs.modal', function(event) {
-        // Button that triggered the modal
         var button = event.relatedTarget;
 
-        // Extract property data from data-* attributes
         var propertyName = button.getAttribute('data-property-name');
-        var propertyLocation = button.getAttribute('data-property-location');
+        var address = button.getAttribute('data-address');
+        var city = button.getAttribute('data-city');
+        var state = button.getAttribute('data-state');
 
-        // Update the modal's input fields
-        var modalPropertyName = exampleModal.querySelector('#property_name');
-        var modalPropertyLocation = exampleModal.querySelector('#property_location');
-
-        modalPropertyName.value = propertyName;
-        modalPropertyLocation.value = propertyLocation;
+        exampleModal.querySelector('#property_name').value = propertyName;
+        exampleModal.querySelector('#address').value = address;
+        exampleModal.querySelector('#city').value = city;
+        exampleModal.querySelector('#state').value = state;
     });
 </script>
 

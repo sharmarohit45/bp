@@ -24,8 +24,16 @@
                                     <td>{{ $property->propertyType }}</td>
                                 </tr>
                                 <tr>
-                                    <th><strong>Property Location </strong></th>
-                                    <td>{{ $property->location }}</td>
+                                    <th><strong>Property Address </strong></th>
+                                    <td>{{ $property->address }}</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Property City </strong></th>
+                                    <td>{{ $property->city }}</td>
+                                </tr>
+                                <tr>
+                                    <th><strong>Property State </strong></th>
+                                    <td>{{ $property->state }}</td>
                                 </tr>
                                 <tr>
                                     <th><strong>Area </strong></th>

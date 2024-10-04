@@ -40,28 +40,17 @@
                             <a class="nav-link" href="{{ url('/buy') }}">Buy</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/rent') }}">Rent</a>
+                            <a class="nav-link" href="{{ url('/properties/search') }}">Rent</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link"  href="{{ url('/all-properties') }}">Property</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="{{ url('/our-packages') }}">Packeges</a>
+                            <a class="nav-link"  href="{{ url('/our-packages') }}">Packages</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="{{ url('/agents') }}">Agents</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Others
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{ url('/property-list') }}">Property List</a></li>
-                                <li><a class="dropdown-item" href="{{ url('/property-details') }}">Property Details</a>
-                                </li>
-                            </ul>
-                        </li>
+                        </li> --}}
                     </ul>
                     <div class="text-end ms-3">
                         @if (Route::has('login'))

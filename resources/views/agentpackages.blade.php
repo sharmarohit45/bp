@@ -90,7 +90,7 @@
                     <div class="card-img-container">
                         <img src="/Images/packagesimage/premium-property.jpg" class="card-img-top" alt="Package Image">
                         <div class="card-img-overlay">
-                            <h3 class="card-title">Sliver</h3>
+                            <h3 class="card-title">Silver</h3>
                         </div>
                     </div>
                     <div class="card-body">

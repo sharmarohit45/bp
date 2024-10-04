@@ -16,7 +16,9 @@ return new class extends Migration
         $table->string('propertyType');
         $table->decimal('propertyPrice', 10, 2);
         $table->string('propertyName');
-        $table->string('location');
+        $table->string('state');
+        $table->string('address');
+        $table->string('city');
         $table->string('posted_from');
         $table->integer('squareFit');
         $table->integer('bedNumber');
