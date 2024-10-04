@@ -45,8 +45,9 @@
                                     <th>Id</th>
                                     <th>Agent Name</th>
                                     <th>email</th>
+                                    <th>Contact</th>
                                     <th>Agent_For</th>
-                                    <th colspan="2" class="text-center">Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody class="text-white">
@@ -59,8 +60,9 @@
                                         <a href="{{ route('admin.agent.show',  $property->id) }}" style="text-decoration: none;color:white">{{  $property->name }}</a> <!-- Use the route to show agent details -->
                                     </td>
                                     <td class="text-white">{{ $property->email }}</td>
+                                    <td class="text-white">{{ $property->phone_number }}</td>
                                     <td class="text-white">{{ $property->agent_for }}</td>
-                                    <td class="text-end">
+                                    {{-- <td class="text-end">
                                         <button
                                             class="btn btn-primary"
                                             data-bs-toggle="modal"
@@ -79,8 +81,8 @@
 
 
 
-                                    </td>
-                                    <td>
+                                    </td> --}}
+                                    <td class="text-center">
                                         <form action="{{ route('properties.destroy', $property->id) }}" method="POST" style="display:inline;">
                                             @csrf
                                             @method('DELETE')

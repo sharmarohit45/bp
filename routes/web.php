@@ -36,6 +36,8 @@ Route::resource('properties', PropertyController::class);
 // Agent Properties Routes
 Route::resource('agentproperties', AgentPropertyController::class);
 Route::resource('adminenquiry', AdminEnquiry::class);
+Route::delete('adminenquiry/{property}', [AdminEnquiry::class, 'destroy'])->name('adminenquiry.destroy');
+
 
 // Custom Routes for Agent Properties
 Route::get('/viewpropertylist', [PropertyController::class, 'viewPropertyList'])->name('viewpropertylist');
@@ -54,3 +56,8 @@ Route::get('/admin/property/{id}', [PropertyController::class, 'showFullDetail']
 Route::get('/admin/agent/{id}', [AdminAgentList::class, 'showagentdetails'])->name('admin.agent.show');
 
 Route::get('/admin/enquiries', [AdminEnquiry::class, 'index'])->name('adminenquiry.index');
+// Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
+
+Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
+
+

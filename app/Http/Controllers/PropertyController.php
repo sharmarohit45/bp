@@ -23,13 +23,13 @@ class PropertyController extends Controller
     }
     public function showFullDetail($id)
     {
-        $property = Property::findOrFail($id); 
-        $images = json_decode($property->image_paths, true); 
-    
-        return view('admin.adminpropertydetails', compact('property', 'images')); 
+        $property = Property::findOrFail($id);
+        $images = json_decode($property->image_paths, true);
+
+        return view('admin.adminpropertydetails', compact('property', 'images'));
     }
-    
-    
+
+
 
     public function create()
     {
@@ -42,9 +42,10 @@ class PropertyController extends Controller
 
             'propertyType' => 'required|string|max:255',
             'propertyPrice' => 'required|numeric',
-
             'propertyName' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'squareFit' => 'required|integer',
             'bedNumber' => 'required|integer',
             'bathNumber' => 'required|integer',
@@ -99,7 +100,9 @@ class PropertyController extends Controller
             'propertyType' => 'required|string|max:255',
             'propertyPrice' => 'required|numeric',
             'propertyName' => 'required|string|max:255',
-            'location' => 'required|string|max:255',
+            'state' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
             'squareFit' => 'required|integer',
             'bedNumber' => 'required|integer',
             'bathNumber' => 'required|integer',
@@ -161,5 +164,28 @@ class PropertyController extends Controller
         $property->delete();
 
         return redirect()->route('properties.index')->with('success', 'Property deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        // Get the search inputs
+        $state = $request->input('state');
+        $city = $request->input('city');
+        $propertyType = $request->input('propertyType'); // Example for additional filtering
+
+        // Query the properties based on the search inputs
+        $properties = Property::query()
+            ->when($state, function ($query, $state) {
+                return $query->where('state', $state);
+            })
+            ->when($city, function ($query, $city) {
+                return $query->where('city', $city);
+            })
+            ->when($propertyType, function ($query, $propertyType) {
+                return $query->where('propertyType', $propertyType);
+            })
+            ->get();
+
+        return view('searchresult.blade', compact('properties'));
     }
 }

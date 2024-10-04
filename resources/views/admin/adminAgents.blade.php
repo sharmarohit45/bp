@@ -88,7 +88,7 @@
                                                         <p>No image available</p>
                                                         @endif
                                                     </td>
-                                                    <td class="text-end">
+                                                    {{-- <td class="text-end">
                                                         <button
                                                             class="btn btn-primary"
                                                             data-bs-toggle="modal"
@@ -107,7 +107,7 @@
 
 
 
-                                                    </td>
+                                                    </td> --}}
                                                     <td>
                                                         <form action="{{ route('properties.destroy', $property->id) }}" method="POST" style="display:inline;">
                                                             @csrf

@@ -1,4 +1,4 @@
-<footer class="container-fluid bg-primary text-white pt-5 pb-2">
+<footer class="container-fluid bg-primary text-white pt-5 mb-0" >
     <div class="row">
         <div class="col-md-4 mb-md-0 text-center">
             <img src="{{ asset('/Images/Property/logo.png') }}" alt="Company Logo" class="img-fluid"

@@ -439,7 +439,7 @@
                                 alt="Icon" />
                         </div>
                         <h6>Apartment</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -451,7 +451,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Villa</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -463,7 +463,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Home</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -475,7 +475,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Office</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -487,7 +487,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Building</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -499,7 +499,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Townhouse</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -511,7 +511,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Shop</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -523,7 +523,7 @@
                             <img class="img-fluid" src="/Images/Property/property-search.jpg" alt="Icon" />
                         </div>
                         <h6>Garage</h6>
-                        <span>123 Properties</span>
+                        {{-- <span>123 Properties</span> --}}
                     </div>
                 </a>
             </div>
@@ -583,7 +583,7 @@
     <div class="container">
         <div class="row pt-5 pb-3">
             <div class="col text-center text-white">
-                <h1>Our Package</h1>
+                <h1 class="text-white">Our Package</h1>
                 <p></p>
             </div>
         </div>

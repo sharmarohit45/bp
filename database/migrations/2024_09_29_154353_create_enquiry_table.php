@@ -14,17 +14,18 @@ return new class extends Migration
         Schema::create('enquiries', function (Blueprint $table) {
             $table->id();
             $table->string('property_name');
-            $table->string('property_location');
+            $table->string('address');
+            $table->string('city');
+            $table->string('state');
             $table->string('name');
             $table->string('email');
             $table->string('phone');
-            $table->timestamps(); // Optional: adds created_at and updated_at
+            $table->timestamps(); 
         });
     }
     
     public function down()
     {
-        // Drop the 'enquiries' table
         Schema::dropIfExists('enquiries');
     }
 };
