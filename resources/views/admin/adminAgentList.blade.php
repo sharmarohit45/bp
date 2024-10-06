@@ -21,17 +21,12 @@
                 <div class="row mt-2 mb-3">
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating" placeholder="Agent ID">
+                            <input type="text" class="form-control floating" id="agentIdSearch" placeholder="Agent ID">
                         </div>
                     </div>
                     <div class="col-sm-6 col-md-3">
                         <div class="form-group form-focus">
-                            <input type="text" class="form-control floating" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="col-sm-6 col-md-3">
-                        <div class="d-grid">
-                            <a href="#" class="btn btn-success w-100">Search</a>
+                            <input type="text" class="form-control floating" id="nameSearch" placeholder="Name">
                         </div>
                     </div>
                 </div>
@@ -293,4 +288,35 @@
         document.getElementById('editPropertyForm').action = `/properties/${property.id}`;
     }
 </script>
+<script>
+    // Function to filter the table based on search inputs
+    function filterTable() {
+        const agentIdInput = document.getElementById('agentIdSearch').value.toLowerCase();
+        const nameInput = document.getElementById('nameSearch').value.toLowerCase();
+        const table = document.querySelector('.table tbody');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 0; i < rows.length; i++) {
+            const idCell = rows[i].getElementsByTagName('td')[0];
+            const nameCell = rows[i].getElementsByTagName('td')[1];
+            let idText = idCell ? idCell.textContent || idCell.innerText : '';
+            let nameText = nameCell ? nameCell.textContent || nameCell.innerText : '';
+
+            // Check if the row should be displayed
+            if (
+                idText.toLowerCase().indexOf(agentIdInput) > -1 &&
+                nameText.toLowerCase().indexOf(nameInput) > -1
+            ) {
+                rows[i].style.display = '';
+            } else {
+                rows[i].style.display = 'none';
+            }
+        }
+    }
+
+    // Attach the filterTable function to input events
+    document.getElementById('agentIdSearch').addEventListener('input', filterTable);
+    document.getElementById('nameSearch').addEventListener('input', filterTable);
+</script>
+
 @endsection

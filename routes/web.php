@@ -17,9 +17,9 @@ Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('adm
 Route::get('/package', function () {
     return view('agent.agentpackages');
 });
-Route::get('/admin/enquiries', function () {
-    return view('admin.adminenquiry');
-});
+
+Route::get('/admin/enquiries', [AdminEnquiry::class, 'filterEnquiries'])->name('admin.enquiries.filter');
+
 Route::get('/admin/package', function () {
     return view('admin.adminpackage');
 });
