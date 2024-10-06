@@ -46,14 +46,11 @@
                             <a class="nav-link"  href="{{ url('/all-properties') }}">Property</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"  href="{{ url('/leads') }}">Lead</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link"  href="{{ url('/our-packages') }}">Packages</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/agents') }}">Agents</a>
-                        </li> --}}
+                       <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/Property-Lead') }}">Property Lead</a>
+                        </li> 
                     </ul>
                     <div class="text-end ms-3">
                         @if (Route::has('login'))

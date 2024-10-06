@@ -5,7 +5,32 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
             <button class="btn btn-dark" id="menu-toggle"><i class="bi bi-list"></i></button>
         </nav>
-
+        <!-- Search Filter -->
+        <div class="row mt-2 mb-3 p-3">
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <input type="text" class="form-control floating" placeholder="City">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="form-group form-focus">
+                    <input type="text" class="form-control floating" placeholder="State">
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <select class="form-select text-dark">
+                    <option>Select By Date</option>
+                    <option value="">Newest</option>
+                    <option value="">Oldest</option>
+                </select>
+            </div>
+            <div class="col-sm-6 col-md-3">
+                <div class="d-grid">
+                    <a href="#" class="btn btn-success w-100">Search</a>
+                </div>
+            </div>
+        </div>
+        <!-- Search Filter -->
         <div class="container-fluid">
             <div class="row mt-4">
                 <div class="col-lg-12">
@@ -18,11 +43,11 @@
                     </div>
                     <div class="card mt-3">
                         <div class="card-body">
-                            @if(session('success'))
+                            @if (session('success'))
                                 <div class="alert alert-success">{{ session('success') }}</div>
                             @endif
-                            
-                            @if($enquiryData->isEmpty())
+
+                            @if ($enquiryData->isEmpty())
                                 <div class="alert alert-info">No enquiries available.</div>
                             @else
                                 <div class="table-responsive">

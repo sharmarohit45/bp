@@ -37,6 +37,28 @@
                     </a>
                 </div>
             </div>
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <a href="/admin-agents" style="text-decoration: none">
+                        <div class="card">
+                            <div class="card-header">Total Leads</div>
+                            <div class="widget">
+                                <h2 class="text-center text-white">0</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-lg-6">
+                    <a href="/viewpropertylist" style="text-decoration: none">
+                        <div class="card">
+                            <div class="card-header">Total Packages</div>
+                            <div class="widget">
+                                <h2 class="text-center text-white">0</h2>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
     </div>
