@@ -1,4 +1,4 @@
 
-@include('header');
-@include('agent.agentpackages');
-@include('footer');
+@include('header')
+@include('agent.agentpackages')
+@include('footer')

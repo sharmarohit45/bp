@@ -46,6 +46,9 @@
                             <a class="nav-link"  href="{{ url('/all-properties') }}">Property</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link"  href="{{ url('/leads') }}">Lead</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link"  href="{{ url('/our-packages') }}">Packages</a>
                         </li>
                         {{-- <li class="nav-item">
