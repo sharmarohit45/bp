@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminEnquiry;
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\AgentPropertyController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeadController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\PropertyDetailsController;
@@ -35,6 +36,8 @@ Route::get('/Property-Lead', function () {
 
 Route::get('/all-properties', [PropertyDetailsController::class, 'index'])->name('allproperties');
 Route::resource('properties', PropertyController::class);
+Route::resource('lead', LeadController::class);
+
 
 // Agent Properties Routes
 Route::resource('agentproperties', AgentPropertyController::class);
@@ -65,5 +68,7 @@ Route::get('/admin/Property-Lead', function () {
 // Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
 
 Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
+Route::get('/admin/leads', [LeadController::class, 'index'])->name('lead.index');
+
 
 
