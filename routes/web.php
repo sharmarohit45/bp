@@ -29,6 +29,9 @@ Route::get('/agent-package', function () {
 Route::get('/our-packages', function () {
     return view('our-packages');
 });
+Route::get('/leads', function () {
+    return view('leadForm');
+});
 
 Route::get('/all-properties', [PropertyDetailsController::class, 'index'])->name('allproperties');
 Route::resource('properties', PropertyController::class);
