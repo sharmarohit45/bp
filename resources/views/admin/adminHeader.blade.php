@@ -113,7 +113,7 @@
                         <a href="/admin/enquiries" class="list-group-item list-group-item-action">
                             <i class="bi bi-envelope-fill"></i> Enquiries
                         </a>
-                        <a href="/admin/Property-Lead" class="list-group-item list-group-item-action">
+                        <a href="/admin/leads" class="list-group-item list-group-item-action">
                             <i class="bi bi-envelope-fill"></i> Lead Details
                         </a>
                         <a href="/admin/package" class="list-group-item list-group-item-action">
