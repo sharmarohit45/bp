@@ -29,8 +29,8 @@ Route::get('/agent-package', function () {
 Route::get('/our-packages', function () {
     return view('our-packages');
 });
-Route::get('/leads', function () {
-    return view('leadForm');
+Route::get('/Property-Lead', function () {
+    return view('propertyLead');
 });
 
 Route::get('/all-properties', [PropertyDetailsController::class, 'index'])->name('allproperties');
@@ -59,6 +59,9 @@ Route::get('/admin/property/{id}', [PropertyController::class, 'showFullDetail']
 Route::get('/admin/agent/{id}', [AdminAgentList::class, 'showagentdetails'])->name('admin.agent.show');
 
 Route::get('/admin/enquiries', [AdminEnquiry::class, 'index'])->name('adminenquiry.index');
+Route::get('/admin/Property-Lead', function () {
+    return view('admin.adminLeadList');
+});
 // Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
 
 Route::get('/properties/search', [PropertyController::class, 'search'])->name('properties.search');
